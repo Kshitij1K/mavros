@@ -73,6 +73,7 @@ add_library(mavros_extras
   src/plugins/fake_gps.cpp
   src/plugins/gps_rtk.cpp
   src/plugins/gripper_servo.cpp
+  src/plugins/height.cpp
   src/plugins/landing_target.cpp
   src/plugins/log_transfer.cpp
   src/plugins/mocap_pose_estimate.cpp
