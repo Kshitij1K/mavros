@@ -39,7 +39,7 @@ class HeightPlugin : public plugin::PluginBase
 {
 public:
     HeightPlugin() : PluginBase(),
-                                     status_nh("~height")
+                                     status_nh("~mission_height_setpoint")
     {
     }
 
@@ -47,7 +47,7 @@ public:
     {
         PluginBase::initialize(uas_);
 
-        status_sub = status_nh.subscribe("height", 10, &HeightPlugin::status_cb, this);
+        status_sub = status_nh.subscribe("mission_height_setpoint", 10, &HeightPlugin::status_cb, this);
     }
 
     Subscriptions get_subscriptions()
@@ -67,18 +67,18 @@ private:
 	 */
     void status_cb(const mavros_msgs::Height::ConstPtr &req)
     {
-        mavlink::common::msg::HEIGHT height{};
+        mavlink::common::msg::HEIGHT mission_height_setpoint{};
 
-        height.height = req->height;
+        mission_height_setpoint.height = req->height;
        
         // ROS_DEBUG_STREAM_NAMED("companion_process_status", "companion process component id: " << utils::to_string_enum<MAV_COMPONENT>(req->component) << " companion process status: " << utils::to_string_enum<MAV_STATE>(heartbeat.system_status) << std::endl
         //                                                                                           << heartbeat.to_yaml());
 
-        UAS_FCU(m_uas)->send_message_ignore_drop(gripper);
+        UAS_FCU(m_uas)->send_message_ignore_drop(mission_height_setpoint);
     }
 };
 } // namespace extra_plugins
 } // namespace mavros
 
-#include <pluginlib/class_list_macr os.h>
+#include <pluginlib/class_list_macros.h>
 PLUGINLIB_EXPORT_CLASS(mavros::extra_plugins::HeightPlugin, mavros::plugin::PluginBase)
