@@ -16,7 +16,7 @@
 
 #include <mavros/mavros_plugin.h>
 
-#include <mavros_msgs/GripperServo.h>
+#include <mavros_msgs/Height.h>
 
 namespace mavros
 {
@@ -80,5 +80,5 @@ private:
 } // namespace extra_plugins
 } // namespace mavros
 
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macr os.h>
 PLUGINLIB_EXPORT_CLASS(mavros::extra_plugins::HeightPlugin, mavros::plugin::PluginBase)

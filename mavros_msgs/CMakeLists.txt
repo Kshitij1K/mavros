@@ -20,6 +20,7 @@ add_message_files(
   ExtendedState.msg
   FileEntry.msg
   GlobalPositionTarget.msg
+  Height.msg
   HilActuatorControls.msg
   HilControls.msg
   HilGPS.msg
@@ -28,8 +29,7 @@ add_message_files(
   HomePosition.msg
   LandingTarget.msg
   LogData.msg
-    GripperServo.msg
-
+  GripperServo.msg
   LogEntry.msg
   ManualControl.msg
   Mavlink.msg
