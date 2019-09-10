@@ -37,7 +37,8 @@ private:
         mavlink::common::msg::MISSION_HEIGHT_SETPOINT mission{};
 
         mission.height = req->height;
-        
+        mission.yaw = req->yaw;
+        mission.avoidance_flag = req->avoidance_flag;
         UAS_FCU(m_uas)->send_message_ignore_drop(mission);
     }
 };
